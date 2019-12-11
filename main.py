@@ -76,7 +76,7 @@ def query_example():
     return Response(json.dumps(entityRelJson), mimetype='application/json')
 
 @app.route('/find', methods = ['POST'])
-def query_example():
+def find_example():
 
     inputText = request.json['text']
 

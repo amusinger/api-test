@@ -46,12 +46,12 @@ def query_example():
     entityRecognitionLinkingObj = entityRecognitionLinking.EntityRecognitionLinking()
     entityRelJson = entityRecognitionLinkingObj.entityRecogLink(inputText)
 
-    entityRecognitionLinkingObjSecond = entityRecognitionLinking.EntityRecognitionLinking()
-    entityRelJsonSecond = entityRecognitionLinkingObjSecond.entityRecogLinkSecond(inputText)
+    # entityRecognitionLinkingObjSecond = entityRecognitionLinking.EntityRecognitionLinking()
+    # entityRelJsonSecond = entityRecognitionLinkingObjSecond.entityRecogLinkSecond(inputText)
 
-    print('2 ------------------------------ 2')
-    print(entityRelJsonSecond)
-    print('2 ------------------------------ 2')
+    # print('2 ------------------------------ 2')
+    # print(entityRelJsonSecond)
+    # print('2 ------------------------------ 2')
 
     entityLinkTriples = []
     for sop in sop_list_strings:
@@ -73,8 +73,21 @@ def query_example():
     # popGraph(sop_list)≠≠
 
 
-    return Response(json.dumps(entityRelJsonSecond), mimetype='application/json')
+    return Response(json.dumps(entityRelJson), mimetype='application/json')
 
+@app.route('/find', methods = ['POST'])
+def query_example():
+
+    inputText = request.json['text']
+
+    entityRecognitionLinkingObjSecond = entityRecognitionLinking.EntityRecognitionLinking()
+    entityRelJsonSecond = entityRecognitionLinkingObjSecond.entityRecogLinkSecond(inputText)
+
+    print('2 ------------------------------ 2')
+    print(entityRelJsonSecond)
+    print('2 ------------------------------ 2')
+
+    return Response(json.dumps(entityRelJsonSecond), mimetype='application/json')
 
 # @app.route('/answer', methods = ['POST'])
 # def answer():
